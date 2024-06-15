@@ -59,7 +59,7 @@ class Game:
             
             if tipo == '1':
                 print("\nA tabela abaixo contém as armas que você pode escolher, digite o primeiro nome da arma para confirmar sua escolha")
-                tipo_escolhido = self.ler_arquivo_arma('Armas_Simples_Corpo_a_Corpo.txt')
+                tipo_escolhido = self.ler_arquivo_arma('armas//Armas_Simples_Corpo_a_Corpo.txt')
                 while True:
                     try:
                         nome_espada = input('\nDigite o nome da arma da sua escolha: ').capitalize()
@@ -79,7 +79,7 @@ class Game:
             
             elif tipo == '2':
                 print("\nA tabela abaixo contém as armas que você pode escolher, digite o primeiro nome da arma para confirmar sua escolha")
-                tipo_escolhido = self.ler_arquivo_arma('Armas_Simples_a_Distancia.txt')
+                tipo_escolhido = self.ler_arquivo_arma('armas//Armas_Simples_a_Distancia.txt')
                 while True:
                     try:
                         nome_espada = input('\nDigite o nome da arma da sua escolha: ').capitalize()
