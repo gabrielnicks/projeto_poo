@@ -1,23 +1,16 @@
 import random
-from abc import ABC, abstractmethod
+import InterfaceEspadas
 
-
-class Armas(ABC):
-    @abstractmethod
-    def ataque_rapido(self) -> int:
-        pass
-
-    @abstractmethod
-    def ataque_lento(self) -> int:
-        pass
-
-    @abstractmethod
-    def acertar(self) -> int:
-        pass
-
-
-class Espadas(Armas):
-    def __init__(self, nome, valor, moeda, dano, tipo_de_dano, peso, medida_de_peso, propriedades):
+class Espadas(InterfaceEspadas):
+    def __init__(self, 
+                 nome: str, 
+                 valor: int, 
+                 moeda: str, 
+                 dano: str, 
+                 tipo_de_dano: str, 
+                 peso: float, 
+                 medida_de_peso: str, 
+                 propriedades: str) -> None:
         self.nome = nome
         self.valor = valor
         self.moeda = moeda
@@ -27,49 +20,14 @@ class Espadas(Armas):
         self.medida_de_peso = medida_de_peso
         self.propriedades = propriedades
 
-    def acertar(self):
-        return random.randint(1, self.acerto)
-
-    def ataque_rapido(self):
+    def ataque_rapido(self)-> int:
         vezes = int(self.dano[0])
         dano = int(self.dano[2:])
         total = vezes * random.randint(1, dano)
         return total
 
-    def ataque_lento(self):
+    def ataque_duas_maos(self)-> int:
         vezes = int(self.dano[0])
         dano = int(self.dano[2:])
         total = 2 * vezes * random.randint(1, dano // 2)
         return total
-
-
-class ArcoFlecha(Armas):
-    def __init__(self, nome, dano, acerto):
-        self.nome = nome
-        self.dano = dano
-        self.acerto = acerto
-
-    def acertar(self):
-        return random.randint(1, self.acerto)
-
-    def ataque_rapido(self):
-        return random.randint(1, self.dano)
-
-    def ataque_lento(self):
-        return random.randint(1, self.dano // 2) + random.randint(1, self.dano // 2)
-
-
-class Magias(Armas):
-    def __init__(self, nome, dano, acerto):
-        self.nome = nome
-        self.dano = dano
-        self.acerto = acerto
-
-    def acertar(self):
-        return random.randint(1, self.acerto)
-
-    def ataque_rapido(self):
-        return random.randint(1, self.dano)
-
-    def ataque_lento(self):
-        return random.randint(1, self.dano // 2) + random.randint(1, self.dano // 2)
