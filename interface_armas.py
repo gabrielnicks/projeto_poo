@@ -1,6 +1,6 @@
 from abc import ABC, abstractmethod
 
-class InterfaceEspadas(ABC):
+class InterfaceArmas(ABC):
     @abstractmethod
     def ataque_rapido(self) -> int:
         pass
