@@ -218,6 +218,9 @@ class Game:
             jogando: bool = self.batalha()
             if not jogando:
                 print('FIM DE JOGO')
+                self.save = SalvarJogo(self.nome_campanha)
+                self.local += 1
+                self.save.progresso(self.local)
                 break
             else:
                 self.save = SalvarJogo(self.nome_campanha)
@@ -228,7 +231,10 @@ class Game:
                     jogador.descansar()
                     self.save.adicionar_jogador(jogador)
                     
-        print("VOCÊS VENCERAM!!")
+        if self.tem_alguem_vivo(self.jogadores):         
+            print("VOCÊS VENCERAM!!")
+        else:
+            print("VOCES PERDERAM")
         
     def batalha(self) -> bool:
             if not self.tem_alguem_vivo(self.jogadores):
