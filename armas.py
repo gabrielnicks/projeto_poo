@@ -31,3 +31,14 @@ class Armas(InterfaceArmas):
         dano = int(self.dano[2:])
         total = 2 * vezes * random.randint(1, dano // 2)
         return total
+
+    def ataque_furioso(self) -> int:
+        vezes = int(self.dano[0])
+        dano = int(self.dano[2:])
+        if random.randint(1, 20) > 10:
+            print(f"\nVoce prepara um ataque furioso com sua {self.nome}")
+            total = vezes * dano
+            return total
+        else:
+            print("\nA raiva faz voce perder o foco no ataque")
+            return 0
