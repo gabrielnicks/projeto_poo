@@ -106,17 +106,35 @@ class Jogador(Ser):
         self.iniciativa = self.modificador(self.__destreza)
 
     def atacar(self, oponente: Ser) -> None:
-        while True:
+         while True:
             try:
-                ataque = int(input("\nFazer um ataque rápido ou atacar com duas mãos? Rapido - 1, Duas Mãos - 2: "))
+                print('\nInterações')
+                print("Ataque Rapido - 1")
+                print("Ataque com Duas Mãos - 2")
+                print("Ataque especial da Classe - 3")
+                print("Ataque furioso - 4")
+                print("Curar a si mesmo - 5")
+                ataque = int(input("Escolha uma interação: "))
+                dano = 0
                 if ataque == 2:
                     dano = self.arma.ataque_duas_maos() + self.modificador(self.__forca)
                     break
                 elif ataque == 1:
                     dano = self.arma.ataque_rapido() + self.modificador(self.__forca)
                     break
+                elif ataque == 3:
+                    dano = self.classe.ataque_especial()
+                    break
+                elif ataque == 4:
+                    dano = self.arma.ataque_furioso() + self.modificador(self.__forca)
+                    break
+                elif ataque == 5:
+                    cura = self.classe.curar_se()
+                    self.vida_atual += cura
+                    print(f"{self.nome} se cura em {cura} pontos de vida, ficando com {self.vida_atual} pontos de vida atual")
+                    break
                 else:
-                    print("Por favor, digite apenas 0 ou 1.")
+                    print("Por favor, digite apenas 2 ou 1.")
             except ValueError:
                 print("Entrada inválida. Por favor, insira um número.")
         print(f'{self.nome} atacou o {oponente.nome}, com {dano} de dano')
@@ -132,6 +150,7 @@ class Jogador(Ser):
             print(f"{self.nome} desviou do ataque")
             
     def descansar(self) -> None:
+        self.classe.recuperar_mana()
         self.vida_atual = self.vida
         
     def apresentaJogador(self) -> None:
