@@ -1,6 +1,7 @@
 import random
+from interface_seres import Ser
 
-class Monstro:
+class Monstro(Ser):
     def __init__(self, nome: str, vida: int = 10, ataque: int = 5, defesa: int = 3) -> None:
         self.nome: str = nome
         self.vida: int = vida
@@ -8,7 +9,7 @@ class Monstro:
         self.defesa: int = defesa
         self.iniciativa: int = 0
 
-    def atacar(self, oponente) -> None:
+    def atacar(self, oponente: Ser) -> None:
         print(f"\n{self.nome} ataca {oponente.nome}!")
         dano: int = random.randint(1, self.ataque)
         print(f'{self.nome} atacou o {oponente.nome}, causando {dano} de dano')
