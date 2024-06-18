@@ -1,22 +1,20 @@
 import random
 
-
 class Monstro:
-    def __init__(self, nome, vida=50, ataque=8, defesa=3):
-        self.nome = nome
-        self.vida = vida
-        self.ataque = ataque
-        self.defesa = defesa
-        self.iniciativa = 0
+    def __init__(self, nome: str, vida: int = 10, ataque: int = 5, defesa: int = 3) -> None:
+        self.nome: str = nome
+        self.vida: int = vida
+        self.ataque: int = ataque
+        self.defesa: int = defesa
+        self.iniciativa: int = 0
 
-    def atacar(self, oponente):
+    def atacar(self, oponente) -> None:
         print(f"\n{self.nome} ataca {oponente.nome}!")
-        dano = random.randint(1, self.ataque)
-        print(f'\n{self.nome} atacou o {oponente.nome}, com {dano} de dano')
+        dano: int = random.randint(1, self.ataque)
+        print(f'{self.nome} atacou o {oponente.nome}, causando {dano} de dano')
         oponente.receber_dano(dano)
         
-    def receber_dano(self, dano):
-        dano_recebido = max(0, dano)  # Garante que o dano recebido não será negativo
+    def receber_dano(self, dano: int) -> None:
+        dano_recebido: int = max(0, dano)  # Garante que o dano recebido não será negativo
         self.vida = max(0, self.vida - dano_recebido)  # Garante que a vida não seja negativa
-        print(f"\n{self.nome} recebeu {dano_recebido} de dano e agora tem "
-              f"{self.vida} de vida")
+        print(f"{self.nome} recebeu {dano_recebido} de dano e agora tem {self.vida} de vida")
