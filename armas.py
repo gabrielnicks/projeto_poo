@@ -1,7 +1,7 @@
 import random
-import InterfaceEspadas
+from interface_armas import InterfaceArmas
 
-class Espadas(InterfaceEspadas):
+class Armas(InterfaceArmas):
     def __init__(self, 
                  nome: str, 
                  valor: int, 
