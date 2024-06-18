@@ -1,9 +1,9 @@
 import random
 from armas import Armas
 from classes import Classe
-from monstro import Monstro
+from interface_seres import Ser
 
-class Jogador:
+class Jogador(Ser):
     def __init__(self, nome: str, classe: Classe, arma: Armas, defesa: int = 5, nivel: int = 1) -> None:
         self.__forca: int = 0
         self.__destreza: int = 0
@@ -105,7 +105,7 @@ class Jogador:
                         
         self.iniciativa = self.modificador(self.__destreza)
 
-    def atacar(self, oponente: Monstro) -> None:
+    def atacar(self, oponente: Ser) -> None:
         while True:
             try:
                 ataque = int(input("\nFazer um ataque rápido ou atacar com duas mãos? Rapido - 1, Duas Mãos - 2: "))
