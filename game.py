@@ -114,7 +114,7 @@ class Game:
                    ['Mago', 6, 4],
                    ['Monge', 8, 5],
                    ['Paladino', 10, 6],
-                   ['Patruleiro', 10, 6]]
+                   ['Patrulheiro', 10, 6]]
         print('\nEscolha uma classe')
         for i in range(len(classes)):
             print(f'{i+1} - {classes[i][0]}, vida base: {classes[i][1]}, vida nos leveis seguintes: {classes[i][2]}')
