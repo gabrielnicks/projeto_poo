@@ -106,7 +106,8 @@ class Jogador(Ser):
         self.iniciativa = self.modificador(self.__destreza)
 
     def atacar(self, oponente: Ser) -> None:
-         while True:
+        dano = 0
+        while True:
             try:
                 print('\nInterações')
                 print("Ataque Rapido - 1")
@@ -115,7 +116,6 @@ class Jogador(Ser):
                 print("Ataque furioso - 4")
                 print("Curar a si mesmo - 5")
                 ataque = int(input("Escolha uma interação: "))
-                dano = 0
                 if ataque == 2:
                     dano = self.arma.ataque_duas_maos() + self.modificador(self.__forca)
                     break
