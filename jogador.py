@@ -5,17 +5,14 @@ from interface_seres import Ser
 
 class Jogador(Ser):
     def __init__(self, nome: str, classe: Classe, arma: Armas, defesa: int = 5, nivel: int = 1) -> None:
+        super().__init__(nome, classe.vida_base, defesa)  # Chama o construtor da superclasse
         self.__forca: int = 0
         self.__destreza: int = 0
         self.__inteligencia: int = 0
         self.__constituicao: int = 0
-        self.__defesa: int = defesa
         self.classe: Classe = classe
         self.arma: Armas = arma
-        self.nome: str = nome
-        self.vida: int = self.classe.vida_base
         self.nivel: int = nivel
-        self.iniciativa: int = 0
         self.vida_atual: int = self.vida
 
     # Getters
@@ -32,7 +29,7 @@ class Jogador(Ser):
         return self.__constituicao
 
     def get_defesa(self) -> int:
-        return self.__defesa
+        return self.defesa
 
     # Setters
     def set_forca(self, valor: int) -> None:
@@ -56,7 +53,7 @@ class Jogador(Ser):
         self.__destreza += 2
         self.__inteligencia += 2
         self.__constituicao += 2
-        self.__defesa += 2
+        self.defesa += 2
         self.vida += self.classe.vida_level + self.modificador(self.__constituicao)
         self.iniciativa = self.modificador(self.__destreza)
  
@@ -134,7 +131,7 @@ class Jogador(Ser):
                     print(f"{self.nome} se cura em {cura} pontos de vida, ficando com {self.vida_atual} pontos de vida atual")
                     break
                 else:
-                    print("Por favor, digite apenas 2 ou 1.")
+                    print("Por favor, digite apenas 1, 2, 3, 4 ou 5.")
             except ValueError:
                 print("Entrada inválida. Por favor, insira um número.")
         print(f'{self.nome} atacou o {oponente.nome}, com {dano} de dano')
@@ -142,7 +139,7 @@ class Jogador(Ser):
 
     def receber_dano(self, dano: int) -> None:
         acerto = random.randint(1, 20)
-        if acerto > self.__defesa:
+        if acerto > self.defesa:
             dano_recebido = max(0, dano)
             self.vida_atual = max(0, self.vida_atual - dano_recebido)
             print(f"{self.nome} recebeu {dano_recebido} de dano e agora tem {self.vida_atual} de vida")
@@ -165,7 +162,7 @@ class Jogador(Ser):
         print(f"Destreza: {self.__destreza} + {self.modificador(self.__destreza)}")
         print(f"Inteligência: {self.__inteligencia} + {self.modificador(self.__inteligencia)}")
         print(f"Constituição: {self.__constituicao} + {self.modificador(self.__constituicao)}")
-        print(f"Defesa: {self.__defesa}")
+        print(f"Defesa: {self.defesa}")
         print(f"Iniciativa: {self.iniciativa}")
         print(f"Arma: {self.arma.nome}")
         print(f"Dano: {self.arma.dano}")
