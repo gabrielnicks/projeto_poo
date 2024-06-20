@@ -3,11 +3,8 @@ from interface_seres import Ser
 
 class Monstro(Ser):
     def __init__(self, nome: str, vida: int = 10, ataque: int = 5, defesa: int = 3) -> None:
-        self.nome: str = nome
-        self.vida: int = vida
-        self.ataque: int = ataque
-        self.defesa: int = defesa
-        self.iniciativa: int = 0
+            super().__init__(nome, vida, defesa)  # Chama o construtor da superclasse
+            self.ataque: int = ataque
 
     def atacar(self, oponente: Ser) -> None:
         print(f"\n{self.nome} ataca {oponente.nome}!")
